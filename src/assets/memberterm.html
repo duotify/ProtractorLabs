@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>會員權益</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  $(window).on("scroll", function () {
+    var scrollHeight = $(document).height();
+    var scrollPosition = $(window).height() + $(window).scrollTop();
+    if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+      setTimeout("$('#accept').prop('disabled', false)", 500);
+    }
+  });
+
+  function acceptterm() {
+    window.opener.document.getElementById("add").disabled = false;
+    window.close();
+  }
+
+</script>
+
+<body>
+  <div>
+    <h2>
+      一、會員服務條款
+    </h2>
+    <div>
+      <p>
+        <ul>
+          <li>
+            本會員服務條款所稱之「會員」，為依照本站所定之加入會員程序加入完成並通過認證者。
+          </li>
+          <li>
+            當您使用本站服務時，即表示您同意及遵守本服務條款的規定事項及相關法律之規定。
+          </li>
+          <li>
+            本站保留有審核加入會員資格之權利，另外已加入會員者，本站亦保留有解除其會員資格之權利。
+          </li>
+        </ul>
+      </p>
+
+    </div>
+    <h2>
+      二、終止授權
+    </h2>
+    <div>
+      <p>
+          您使用本服務之行為若有任何違反法令或本使用條款或危害本網站或第三者權益之虞時，本公司有權不經告知您，立即暫時或永久終止您使用本服務之授權。
+      </p>
+    </div>
+
+    <h2>
+      三、免責事項
+    </h2>
+    <div>
+      <p>
+          1.下列情形發生時，本網站有權可以停止、中斷提供本服務：
+          a)對本服務相關軟硬體設備進行更換、升級、保養或施工時。
+          b)發生突發性之電子通信設備故障時。
+          c)天災或其他不可抗力之因素致使本網站無法提供服務時。
+         2.本公司對於使用者在使用本服務或使用本服務所致生之任何直接、間接、衍生之財產或非財產之損害，不負賠償責任。
+         3.使用者對於上傳留言之文字、圖片及其它資料，應自行備份；本公司對於任何原因導致其內容全部或一部之滅失、毀損，不負任何責任。
+         4.本公司對使用本服務之用途或所產生的結果，不負任何保證責任，亦不保證與本服務相關之軟體無缺失或會予以修正。
+         5.對於您在本站中的所有言論、意見或行為僅代表您個人；不代表本公司的立場，本公司不負任何責任。本公司對於使用者所自稱之身分，不擔保其正確性。
+         6.本公司無須對發生於本服務或透過本服務所涉及之任何恐嚇、誹謗、淫穢或其他一切不法行為對您或任何人負責。
+         7.對於您透過本服務所購買或取得，或透過本公司之贊助者或廣告商所刊登、銷售或交付之任何貨品或服務，您應自行承擔其可能風險或依法向商品或服務提供者交涉求償，與本公司完全無關，本公司均不負任何責任。
+      </p>
+    </div>
+  </div>
+  <button disabled id='accept' onclick="acceptterm();">同意</button>
+  <button onclick="window.close();">取消</button>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<h1>建立活動</h1>
+<hr>
+<div class="col-md-6">
+  <form #newEventForm="ngForm" (ngSubmit)="saveEvent(newEventForm.value)" autocomplete="off" novalidate>
+
+    <div class="form-group" [ngClass]="{'error': newEventForm.controls.name?.invalid && newEventForm.controls.name?.touched}">
+      <label for="eventName">活動名稱:</label>
+      <em *ngIf="newEventForm.controls.name?.invalid && (newEventForm.controls.name?.touched)">請填寫</em>
+      <input (ngModel)="newEvent.name" name="name" required id="name" type="text" class="form-control" placeholder="活動名稱..." />
+    </div>
+    <label for="eventDate">活動日期:</label>
+    <em *ngIf="newEventForm.controls.date?.invalid && (newEventForm.controls.date?.touched)">請填寫</em>
+    <div class="form-group row" [ngClass]="{'error': newEventForm.controls.date?.invalid && newEventForm.controls.date?.touched}">
+      <div class="col-md-10">
+          <input matInput [matDatepicker]="myDatepicker" (ngModel)="newEvent.date" name="date" required id="eventDate" type="text"
+          class="form-control" placeholder="格式 (mm/dd/yyyy)..." />
+      </div>
+      <div class="col-md-2">
+          <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker></mat-datepicker>
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'error': newEventForm.controls.time?.invalid && newEventForm.controls.time?.touched}">
+      <label for="eventTime">活動時間:</label>
+      <em *ngIf="newEventForm.controls.time?.invalid && (newEventForm.controls.time?.touched)">請填寫</em>
+      <input (ngModel)="newEvent.time" name="time" required id="eventTime" type="text" class="form-control" placeholder="活動時間..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error': newEventForm.controls.price?.invalid && newEventForm.controls.price?.touched}">
+      <label for="eventPrice">活動票價:</label>
+      <em *ngIf="newEventForm.controls.price?.invalid && (newEventForm.controls.price?.touched)">請填寫</em>
+      <input (ngModel)="newEvent.price" name="price" required id="eventPrice" type="text" type="number" class="form-control" placeholder="活動票價..." />
+    </div>
+
+    <div ngModelGroup="location" #locationGroup="ngModelGroup" validateLocation>
+      <div class="form-group">
+        <label for="address">活動地點:</label>
+        <em *ngIf="locationGroup?.invalid && locationGroup?.touched">請輸入完整活動地點</em>
+        <input (ngModel)="newEvent.address" name="address" id="address" type="text" class="form-control" placeholder="活動地址..." />
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <input (ngModel)="newEvent.city" name="city" id="city" type="text" class="form-control" placeholder="城市..." />
+        </div>
+        <div class="col-md-6" >
+          <input (ngModel)="newEvent.country" name="country" id="country" type="text" class="form-control" placeholder="國家..." />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="onlineUrl">活動網址:</label>
+      <input (ngModel)="newEvent.onlineUrl" name="onlineUrl" id="onlineUrl" type="text" class="form-control" (change)="locationGroup.control.controls.address.updateValueAndValidity()" placeholder="http://abc.com" />
+    </div>
+
+    <div class="form-group" [ngClass]="{'error': newEventForm.controls.imageFile?.invalid && newEventForm.controls.imageFile?.touched}">
+      <label for="imageFile">上傳活動圖片</label>
+      <em *ngIf="newEventForm.controls.imageFile?.invalid && newEventForm.controls.imageFile?.touched && newEventForm.controls.imageFile?.errors.required">請填寫</em>
+      <input (ngModel)="newEvent.imageFile" name="imageFile" required id="imageFile" type="file" class="form-control" (change)="onFileSelected($event)" placeholder="Select a png or jpg file" accept="image/png, image/jpeg"/>
+    </div>
+
+    <button type="submit" [disabled]="newEventForm.invalid" class="btn btn-success">儲存</button>
+    <button type="button" class="btn btn-secondary" (click)="cancel()">取消</button>
+  </form>
+</div>

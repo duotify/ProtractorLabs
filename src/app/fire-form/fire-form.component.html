@@ -1,0 +1,21 @@
+<div class="order-form">
+  <h2>練習 Action Helper</h2>
+
+  <form [formGroup]="orderForm">
+
+  <mat-form-field floatLabel=true>
+    <mat-label class="center-block">姓氏:</mat-label>
+    <input matInput class="form-control" formControlName="lastName">
+  </mat-form-field>
+
+  <mat-form-field floatLabel=true>
+    <mat-label class="center-block">名字:</mat-label>
+    <input matInput class="form-control" formControlName="firstName">
+  </mat-form-field>
+
+  <button class="btn btn-success" (click)="onFire()">送出</button>
+  <div>
+    {{ message }}
+  </div>
+  </form>
+

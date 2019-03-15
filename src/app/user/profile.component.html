@@ -1,0 +1,31 @@
+<div>
+  <h1>編輯會員</h1>
+  <hr>
+  <div class="col-md-4">
+    <div>
+      <!-- <p>
+        離開編輯時間 (
+{{timer}}
+        ) 秒
+      </p> -->
+    </div>
+    <form [formGroup]="profileForm" (ngSubmit)="saveProfile(profileForm.value)" autocomplete="off" novalidate>
+      <div class="form-group" [ngClass]="{'error' : !validateFirstName() }">
+        <label for="firstName">名字:</label>
+        <em *ngIf="!validateFirstName() && profileForm.controls.firstName.errors.required">請填寫</em>
+        <em *ngIf="!validateFirstName() && profileForm.controls.firstName.errors.pattern">Must start with a letter</em>
+        <input formControlName="firstName" id="firstName" type="text" class="form-control" placeholder="名字..." />
+      </div>
+      <div class="form-group"  [ngClass]="{'error' : !validateLastName() }">
+        <label for="lastName">姓氏:</label>
+        <em *ngIf="!validateLastName()">請填寫</em>
+        <input formControlName="lastName" id="lastName" type="text" class="form-control" placeholder="姓氏..." />
+      </div>
+
+      <button type="submit" class="btn btn-success">儲存</button>
+      <button type="button" class="btn btn btn-secondary" (click)="cancel()">取消</button>
+
+      <button type="button" class="btn btn-warning" style="float:right" (click)="logout()">登出</button>
+    </form>
+  <div>
+</div>

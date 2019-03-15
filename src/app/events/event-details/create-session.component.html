@@ -1,0 +1,71 @@
+<div class="col-md-12">
+  <h3>建立議程</h3>
+</div>
+<div class="col-md-6">
+  <form [formGroup]="newSessionForm" (ngSubmit)="saveSession(newSessionForm.value)" autocomplete="off">
+    <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty }">
+      <label for="sessionName">議程名稱:</label>
+      <em *ngIf="name.invalid && name.dirty">請填寫</em>
+      <input formControlName="name" name='name' id="sessionName" type="text" class="form-control" placeholder="議程名稱..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error': presenter.invalid && presenter.dirty }">
+      <label for="presenter">主講人:</label>
+      <em *ngIf="presenter.invalid && presenter.dirty">請填寫</em>
+      <input formControlName="presenter" name='presenter' id="presenter" type="text" class="form-control" placeholder="主講人..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error': duration.invalid && duration.dirty }">
+      <label for="duration">演講時間:</label>
+      <em *ngIf="duration.invalid && duration.dirty">請填寫</em>
+      <select formControlName="duration" name="duration" class="form-control">
+        <option value="">選擇演講時間...</option>
+        <option value="1">半小時</option>
+        <option value="2">一小時</option>
+        <option value="3">半天</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <label>場次:</label>
+        <div>
+            <label>
+            <input type="radio" name="period" formControlName="period" value="上午場"/>
+            上午場
+            </label>
+            &nbsp;&nbsp;
+            <label>
+                <input type="radio" name="period"  formControlName="period" value="下午場">
+                下午場
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+      <label>適合程度:</label>
+      <div>
+          <label>
+              <input formControlName="level1" name='level' type="checkbox" value='初級'/>
+              初級
+          </label>
+          &nbsp;&nbsp;
+          <label>
+              <input formControlName="level2" name='level' type="checkbox" value='中級'/>
+              中級
+          </label>
+          &nbsp;&nbsp;
+          <label>
+              <input formControlName="level3" name='level' type="checkbox" value='進階'/>
+              進階
+          </label>
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'error': abstract.invalid && abstract.dirty }">
+      <label for="abstract">演講內容:</label>
+      <em *ngIf="abstract.invalid && abstract.dirty && abstract?.errors.required">請填寫</em>
+      <em *ngIf="abstract.invalid && abstract.dirty && abstract?.errors.maxLength">Cannot exceed 400 characters</em>
+      <em *ngIf="abstract.invalid && abstract.dirty && abstract?.errors.restrictedWords">Restricted words found: {{abstract.errors.restrictedWords}}</em>
+      <textarea formControlName="abstract" name='abstract' id="abstract" rows=3 class="form-control" placeholder="演講內容..."></textarea>
+    </div>
+    <button type="submit" [disabled]="newSessionForm.invalid"  class="btn btn-success">儲存</button>
+    <button type="button" (click)="cancel()" class="btn btn-secondary">取消</button>
+    <p></p>
+  </form>
+</div>
+

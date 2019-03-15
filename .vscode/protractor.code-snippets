@@ -1,0 +1,336 @@
+{
+  "import-protractor": {
+    "scope": "javascript,typescript",
+    "prefix": "import-protractor",
+    "body": [
+      "import { browser, by, element, $, $$, ExpectedConditions as EC } from 'protractor';",
+    ],
+  },
+  "import-blue-harvest": {
+    "scope": "javascript,typescript",
+    "prefix": "import-blue-harvest",
+    "body": [
+      "import { compareScreenshot, addMask, go, click, see, type } from 'blue-harvest';",
+    ],
+  },
+
+  "describeTemplate": {
+    "scope": "javascript,typescript",
+    "prefix": "desc",
+    "body": [
+      "describe('${1:scenario}', () => {",
+      "  $0",
+      "});"
+    ],
+  },
+  "xdescribeTemplate": {
+    "scope": "javascript,typescript",
+    "prefix": "xdesc",
+    "body": [
+      "xdescribe('${1:scenario}', () => {",
+      "  $0",
+      "});"
+    ],
+  },
+  "fdescribeTemplate": {
+    "scope": "javascript,typescript",
+    "prefix": "fdesc",
+    "body": [
+      "fdescribe('${1:scenario}', () => {",
+      "  $0",
+      "});"
+    ],
+  },
+
+  "itTemplate": {
+    "scope": "javascript,typescript",
+    "prefix": "it",
+    "body": [
+      "it('should ${1:do something}', async () => {",
+      "  $0",
+      "});"
+    ],
+  },
+  "xitTemplate": {
+    "scope": "javascript,typescript",
+    "prefix": "xit",
+    "body": [
+      "xit('should ${1:do something}', async () => {",
+      "  $0",
+      "});"
+    ],
+  },
+  "fitTemplate": {
+    "scope": "javascript,typescript",
+    "prefix": "fit",
+    "body": [
+      "fit('should ${1:do something}', async () => {",
+      "  $0",
+      "});"
+    ],
+  },
+
+  "element-by": {
+    "scope": "javascript,typescript",
+    "prefix": "element-by",
+    "body": "element(by.${1|buttonText,id,className,name,tagName,linkText|}('$2'))"
+  },
+  "element-checkbox": {
+    "scope": "javascript,typescript",
+    "prefix": "element-checkbox",
+    "body": "element(by.css(`input[type=checkbox][name=${1:fieldName}][value=${2:value}]`))"
+  },
+  "element-radiobutton": {
+    "scope": "javascript,typescript",
+    "prefix": "element-radiobutton",
+    "body": "element(by.css(`input[type=radio][name=${1:fieldName}][value=${2:value}]`))"
+  },
+
+  "elementWithClick": {
+    "scope": "javascript,typescript",
+    "prefix": "element-by-click",
+    "body": "await element(by.${1|buttonText,id,className,name,tagName,linkText|}('$2')).click();"
+  },
+  "elementWithSendkey": {
+    "scope": "javascript,typescript",
+    "prefix": "element-by-sendKeys",
+    "body": "await element(by.${1|name,id,className,tagName|}('$2')).sendKeys('$3');"
+  },
+  "dropdownClick1": {
+    "scope": "javascript,typescript",
+    "prefix": "element-select-click1",
+    "body": "await element(by.name('${1:selectName}')).element(by.cssContainingText('option', '${2:選項}')).click();"
+  },
+  "dropdownClick2": {
+    "scope": "javascript,typescript",
+    "prefix": "element-select-click2",
+    "body": "await element(by.name('${1:selectName}')).all(by.tagName('option')).get(${2:0}).click();"
+  },
+  "checkboxClick": {
+    "scope": "javascript,typescript",
+    "prefix": "element-checkbox-click",
+    "body": "await element(by.css(`input[type=checkbox][name=${1:fieldName}][value=${2:value}]`)).click();"
+  },
+  "radiobuttonClick": {
+    "scope": "javascript,typescript",
+    "prefix": "element-radiobutton-click",
+    "body": "await element(by.css(`input[type=radio][name=${1:fieldName}][value=${2:value}]`)).click();"
+  },
+
+  "expectInput": {
+    "scope": "javascript,typescript",
+    "prefix": "expect-input-value",
+    "body": "expect(await ${1:element}.getAttribute('value')).toBe('${2:value}');",
+    "description": "驗證 input/select 欄位值是否符合預期"
+  },
+
+  "expectCheckbox": {
+    "scope": "javascript,typescript",
+    "prefix": "expect-checked",
+    "body": "expect(await ${1:element}.getAttribute('checked')).toBeTruthy();"
+  },
+  "expectRadioButton": {
+    "scope": "javascript,typescript",
+    "prefix": "exr",
+    "body": "expect(await ${1:element}.getAttribute('checked')).toBeTruthy();"
+  },
+  "elementByButtonText": {
+    "scope": "javascript,typescript",
+    "prefix": "ebbtn",
+    "body": "element(by.buttonText('$1'));"
+  },
+  "elementAllByButtonText": {
+    "scope": "javascript,typescript",
+    "prefix": "eabtn",
+    "body": "element.all(by.buttonText('$1'));"
+  },
+  "elementByPartialButtonText": {
+    "scope": "javascript,typescript",
+    "prefix": "ebpbtn",
+    "body": "element(by.partialButtonText('$1'));"
+  },
+  "elementAllByPartialButtonText": {
+    "scope": "javascript,typescript",
+    "prefix": "eapbtn",
+    "body": "element.all(by.partialButtonText('$1'));"
+  },
+  "elementByCssContainingText": {
+    "scope": "javascript,typescript",
+    "prefix": "ebcsstxt",
+    "body": "element(by.cssContainingText('${1:css}', '${2:text}'));"
+  },
+  "elementAllByCssContainingText": {
+    "scope": "javascript,typescript",
+    "prefix": "eacsstxt",
+    "body": "element.all(by.cssContainingText('${1:css}', '${2:text}'));"
+  },
+  "elementByClassName": {
+    "scope": "javascript,typescript",
+    "prefix": "ebclass",
+    "body": "element(by.className('$1'));"
+  },
+  "elementAllByClassName": {
+    "scope": "javascript,typescript",
+    "prefix": "eaclass",
+    "body": "element.all(by.className('$1'));"
+  },
+  "elementByCss": {
+    "scope": "javascript,typescript",
+    "prefix": "ebcss",
+    "body": "element(by.css('$1'));"
+  },
+  "elementAllByCss": {
+    "scope": "javascript,typescript",
+    "prefix": "eacss",
+    "body": "element.all(by.css('$1'));"
+  },
+  "elementById": {
+    "scope": "javascript,typescript",
+    "prefix": "ebid",
+    "body": "element(by.id('$1'));"
+  },
+  "elementAllById": {
+    "scope": "javascript,typescript",
+    "prefix": "eaid",
+    "body": "element.all(by.id('$1'));"
+  },
+  "elementByLinkText": {
+    "scope": "javascript,typescript",
+    "prefix": "eblink",
+    "body": "element(by.linkText('$1'));"
+  },
+  "elementAlByLinkText": {
+    "scope": "javascript,typescript",
+    "prefix": "ealink",
+    "body": "element.all(by.linkText('$1'));"
+  },
+  "elementByPartialLinkText": {
+    "scope": "javascript,typescript",
+    "prefix": "ebplink",
+    "body": "element(by.partialLinkText('$1'));"
+  },
+  "elementAllByPartialLinkText": {
+    "scope": "javascript,typescript",
+    "prefix": "eaplink",
+    "body": "element.all(by.partialLinkText('$1'));"
+  },
+  "elementByName": {
+    "scope": "javascript,typescript",
+    "prefix": "ebname",
+    "body": "element(by.name('$1'));"
+  },
+  "elementAllByName": {
+    "scope": "javascript,typescript",
+    "prefix": "eaname",
+    "body": "element.all(by.name('$1'));"
+  },
+  "elementByTagName": {
+    "scope": "javascript,typescript",
+    "prefix": "ebtag",
+    "body": "element(by.tagName('$1'));"
+  },
+  "elementAllByTagName": {
+    "scope": "javascript,typescript",
+    "prefix": "eatag",
+    "body": "element.all(by.tagName('$1'));"
+  },
+  "elementByXpath": {
+    "scope": "javascript,typescript",
+    "prefix": "ebxp",
+    "body": "element(by.xpath('$1'));"
+  },
+  "elementAllByXpath": {
+    "scope": "javascript,typescript",
+    "prefix": "eaxp",
+    "body": "element.all(by.xpath('$1'));"
+  },
+  "elementClear": {
+    "scope": "javascript,typescript",
+    "prefix": "eclr",
+    "body": "await ${1:element}.clear();"
+  },
+  "elementClick": {
+    "scope": "javascript,typescript",
+    "prefix": "eclk",
+    "body": "await ${1:element}.click();",
+    "description": "Protractor element.click"
+  },
+  "elementGetAttribute": {
+    "scope": "javascript,typescript",
+    "prefix": "ega",
+    "body": "await ${1:element}.getAttribute('$2');",
+    "description": "Protractor element.getAttribute"
+  },
+  "elementGetInputValue": {
+    "scope": "javascript,typescript",
+    "prefix": "egiv",
+    "body": "await ${1:element}.getAttribute('value');",
+    "description": "Protractor element.getAttribute('value')"
+  },
+  "elementGetText": {
+    "scope": "javascript,typescript",
+    "prefix": "egt",
+    "body": "await ${1:element}.getText();",
+    "description": "Protractor element.getText"
+  },
+  "elementSendKeys": {
+    "scope": "javascript,typescript",
+    "prefix": "esk",
+    "body": "await ${1:element}.sendKeys('$2');",
+    "description": "Protractor element.sendKeys"
+  },
+  "browserGet": {
+    "scope": "javascript,typescript",
+    "prefix": "bg",
+    "body": "await browser.get('$1');",
+    "description": "Protractor browser.get"
+  },
+  "browserGetCurrentUrl": {
+    "scope": "javascript,typescript",
+    "prefix": "bgcurl",
+    "body": "await browser.getCurrentUrl();",
+    "description": "Protractor browser.getCurrentUrl"
+  },
+  "browserSetLocation": {
+    "scope": "javascript,typescript",
+    "prefix": "bsl",
+    "body": "await browser.setLocation('$1');",
+    "description": "Protractor browser.setLocation"
+  },
+  "browserWait": {
+    "scope": "javascript,typescript",
+    "prefix": "bw",
+    "body": "await browser.wait($1);",
+    "description": "Protractor browser.wait"
+  },
+  "browserWaitForAngular": {
+    "scope": "javascript,typescript",
+    "prefix": "bwa",
+    "body": "await browser.waitForAngular();",
+    "description": "Protractor browser.waitForAngular"
+  }
+  // "poset": {
+  //   "scope": "javascript,typescript",
+  //   "prefix": "poset",
+  //   "body": "this.set${1:Element} = (${2:value}) => {\n\t${3:element}.clear().sendKeys(${2:value});\n};",
+  //   "description": "Protractor page object set element using sendKeys()"
+  // },
+  // "poget": {
+  //   "scope": "javascript,typescript",
+  //   "prefix": "poget",
+  //   "body": "this.get${1:Element} = () => {\n\treturn ${2:element}.getText();\n};",
+  //   "description": "Protractor page object get element text using getText()"
+  // },
+  // "pogetval": {
+  //   "scope": "javascript,typescript",
+  //   "prefix": "pogetval",
+  //   "body": "this.get${1:Element} = () => {\n\treturn ${2:element}.getAttribute('value');\n};",
+  //   "description": "Protractor page object get element value using getAttribute('value')"
+  // },
+  // "poclick": {
+  //   "scope": "javascript,typescript",
+  //   "prefix": "poclick",
+  //   "body": "this.click${1:Element} = () => {\n\t ${2:element}.click();\n};",
+  //   "description": "Protractor page object click element"
+  // }
+}

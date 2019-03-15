@@ -1,0 +1,3 @@
+describe('gif page present', () => {
+
+});

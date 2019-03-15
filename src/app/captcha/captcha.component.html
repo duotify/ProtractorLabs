@@ -1,0 +1,16 @@
+<div>
+  <h1>驗證碼練習</h1>
+  <hr>
+  <div class="col-md-4">
+    <form autocomplete="off" novalidate>
+      <div class="form-group">
+        <label for="captchaCode">驗證碼:</label>
+        <input name="captchaCode" [(ngModel)]="captchaCode"  type="text" class="form-control" placeholder="請輸入驗證碼 ..." />
+        <br >
+        <img [src]='currentCode[1]'>
+      </div>
+      <button type="button" (click)="submit()" class="btn btn-success">送出</button>
+      {{ result }}
+    </form>
+  <div>
+</div>
