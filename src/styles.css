@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+.hoverwell:hover {
+  background-color: #2f96b4;
+  cursor: pointer;
+}
+
+.container {
+  padding-top: 10px;
+}
+
+button {
+  color: #555;
+  border-radius: 5px !important;
+  margin-right: 3px !important;
+  margin-bottom: 3px !important;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.toast-success {
+  background-color: #51a351;
+}
+
+.toast-error {
+  background-color: #bd362f;
+}
+
+.toast-info {
+  background-color: #2f96b4;
+}
+
+.toast-warning {
+  background-color: #f89406;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color:#002B36;
+}
+ng-component, h1{
+  color:white;
+}
+
+.thumbnail {
+  background-color: #375a7f;
+  border-radius: 10px;
+}
+.navbar{
+  background-color: #375a7f;
+  border-radius: 10px;
+}
+
+.btn-primary {
+  background-color: #2b4764;
+  border-color: #28415b;
+}
+.mat-icon-button {
+  color: #3498DB;
+}
+
+.well,.pointable{
+  background-color: #375a7f;
+  border-radius: 10px;
+}

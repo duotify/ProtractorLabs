@@ -1,0 +1,50 @@
+<div class="container">
+  <img [src]="event?.image" [alt]="event?.name" class="event-image">
+
+  <div class="row">
+    <div class="col-md-11">
+      <h2>{{event?.name | uppercase}} </h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div><strong>活動日期:</strong> {{event?.date | date:'shortDate'}}</div>
+      <div><strong>活動時間:</strong> {{event?.time}}</div>
+      <div><strong>活動票價:</strong> {{event?.price | currency:'USD'}}</div>
+    </div>
+    <div class="col-md-6">
+      <address>
+        <strong>活動地址:</strong><br />
+        {{event?.location?.address}}<br />
+        {{event?.location?.city}}, {{event?.location?.country}}
+      </address>
+    </div>
+  </div>
+
+  <hr>
+
+
+
+  <div class="row" style="margin-bottom:10px">
+    <div class="col-md-2">
+      <h3 style="margin:0">活動議程列表</h3>
+    </div>
+    <div class="col-md-2">
+      <a (click)="addSession()">建立議程</a>
+    </div>
+    <div class="col-md-7">
+      <!-- <div class="btn-group btn-group-sm">
+        <button class="btn btn-default" [class.active]="filterBy==='all'" (click)="filterBy='all'">全部</button>
+        <button class="btn btn-default" [class.active]="filterBy==='beginner'" (click)="filterBy='beginner'">初級</button>
+        <button class="btn btn-default" [class.active]="filterBy==='intermediate'" (click)="filterBy='intermediate'">中級</button>
+        <button class="btn btn-default" [class.active]="filterBy==='advanced'" (click)="filterBy='advanced'">進階</button>
+      </div> -->
+    </div>
+
+  </div>
+
+  <session-list [eventId]="event?.id" [filterBy]="filterBy" [sortBy]="sortBy" *ngIf="!addMode" [sessions]="event?.sessions"></session-list>
+  <create-session *ngIf="addMode" (saveNewSession)="saveNewSession($event)" (cancelAddSession)="cancelAddSession()"></create-session>
+
+</div>

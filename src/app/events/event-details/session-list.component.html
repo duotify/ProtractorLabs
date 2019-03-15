@@ -1,0 +1,20 @@
+<div class="row" *ngFor="let session of visibleSessions">  
+  <div class="col-md-12">
+    <collapsible-well [title]="session.name">
+      <div well-title>
+        {{session.name}}
+      </div>
+      <div well-body>
+        <h6>{{session.presenter}}</h6>
+        <span>演講時間: {{session.duration | duration}}</span><br />
+        <span>場次: {{session.period }}</span><br />
+        <span>適合程度:
+          <span *ngIf="session.level1">初級,</span>
+          <span *ngIf="session.level2">中級,</span>
+          <span *ngIf="session.level3">進階</span>
+        </span>
+        <p>{{session.abstract}}</p>
+      </div>
+    </collapsible-well>
+  </div>
+</div>
