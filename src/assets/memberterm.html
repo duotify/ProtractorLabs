@@ -8,11 +8,18 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+
+  $(function() {
+    if (window.innerHeight > document.body.scrollHeight) {
+      $('#accept').prop('disabled', false);
+    }
+  })
+
   $(window).on("scroll", function () {
     var scrollHeight = $(document).height();
     var scrollPosition = $(window).height() + $(window).scrollTop();
-    if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
-      setTimeout("$('#accept').prop('disabled', false)", 500);
+    if ((scrollHeight - scrollPosition) <= 10) {
+      $('#accept').prop('disabled', false);
     }
   });
 
