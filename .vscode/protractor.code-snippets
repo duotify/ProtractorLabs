@@ -1,4 +1,6 @@
 {
+  // import
+
   "import-protractor": {
     "scope": "javascript,typescript",
     "prefix": "import-protractor",
@@ -14,7 +16,9 @@
     ],
   },
 
-  "describeTemplate": {
+  // describe
+
+  "describe": {
     "scope": "javascript,typescript",
     "prefix": "desc",
     "body": [
@@ -23,7 +27,7 @@
       "});"
     ],
   },
-  "xdescribeTemplate": {
+  "xdescribe": {
     "scope": "javascript,typescript",
     "prefix": "xdesc",
     "body": [
@@ -32,7 +36,7 @@
       "});"
     ],
   },
-  "fdescribeTemplate": {
+  "fdescribe": {
     "scope": "javascript,typescript",
     "prefix": "fdesc",
     "body": [
@@ -42,7 +46,9 @@
     ],
   },
 
-  "itTemplate": {
+  // it
+
+  "it": {
     "scope": "javascript,typescript",
     "prefix": "it",
     "body": [
@@ -51,7 +57,7 @@
       "});"
     ],
   },
-  "xitTemplate": {
+  "xit": {
     "scope": "javascript,typescript",
     "prefix": "xit",
     "body": [
@@ -60,7 +66,7 @@
       "});"
     ],
   },
-  "fitTemplate": {
+  "fit": {
     "scope": "javascript,typescript",
     "prefix": "fit",
     "body": [
@@ -70,10 +76,68 @@
     ],
   },
 
+  // browser
+
+  "browserGet": {
+    "scope": "javascript,typescript",
+    "prefix": "browser-get",
+    "body": "await browser.get('$1');",
+    "description": "Protractor browser.get"
+  },
+  "browserGetCurrentUrl": {
+    "scope": "javascript,typescript",
+    "prefix": "browser-getCurrentUrl",
+    "body": "const ${1:url} = await browser.getCurrentUrl();",
+    "description": "Protractor browser.getCurrentUrl"
+  },
+  "browserSetLocation": {
+    "scope": "javascript,typescript",
+    "prefix": "browser-setLocation",
+    "body": "await browser.setLocation('$1');",
+    "description": "Protractor browser.setLocation"
+  },
+  "browserWait": {
+    "scope": "javascript,typescript",
+    "prefix": "browser-wait",
+    "body": "await browser.wait($1);",
+    "description": "Protractor browser.wait"
+  },
+  "browserPause": {
+    "scope": "javascript,typescript",
+    "prefix": "browser-pause",
+    "body": "await browser.pause();",
+    "description": "Protractor browser.wait"
+  },
+  "browserwaitForAngularEnabled": {
+    "scope": "javascript,typescript",
+    "prefix": "browser-waitForAngularEnabled",
+    "body": "await browser.waitForAngularEnabled(${1|false,true|});",
+    "description": "Protractor browser.waitForAngularEnabled"
+  },
+  "browserwaitForAngular": {
+    "scope": "javascript,typescript",
+    "prefix": "browser-waitForAngular",
+    "body": "await browser.waitForAngular();",
+    "description": "Protractor browser.waitForAngular"
+  },
+  "browsergetPageSource": {
+    "scope": "javascript,typescript",
+    "prefix": "browser-getPageSource",
+    "body": "const ${1:src} = await browser.getPageSource();",
+    "description": "Protractor browser.wait"
+  },
+
+  // ElementFinder
+
   "element-by": {
     "scope": "javascript,typescript",
     "prefix": "element-by",
-    "body": "element(by.${1|buttonText,id,className,name,tagName,linkText|}('$2'))"
+    "body": "element(by.${1|id,css,className,tagName,name,buttonText,partialButtonText,linkText,partialLinkText|}('$2'))"
+  },
+  "element-by-cssContainingText": {
+    "scope": "javascript,typescript",
+    "prefix": "element-by-cssContainingText",
+    "body": "element(by.cssContainingText('${1:cssSelector}', '${2:searchText}'))"
   },
   "element-checkbox": {
     "scope": "javascript,typescript",
@@ -86,10 +150,12 @@
     "body": "element(by.css(`input[type=radio][name=${1:fieldName}][value=${2:value}]`))"
   },
 
+  // Actions
+
   "elementWithClick": {
     "scope": "javascript,typescript",
     "prefix": "element-by-click",
-    "body": "await element(by.${1|buttonText,id,className,name,tagName,linkText|}('$2')).click();"
+    "body": "await element(by.${1|id,css,className,tagName,name,buttonText,partialButtonText,linkText,partialLinkText|}('$2')).click();"
   },
   "elementWithSendkey": {
     "scope": "javascript,typescript",
@@ -117,10 +183,29 @@
     "body": "await element(by.css(`input[type=radio][name=${1:fieldName}][value=${2:value}]`)).click();"
   },
 
+  // Matchers/Expectations
+
+  "expect-toThrow": {
+    "scope": "javascript,typescript",
+    "prefix": "expect-toThrow",
+    "body": [
+      "expect(function () {",
+      "  $0",
+      "}).toThrow();"
+    ]
+  },
+
+  "expect-toThrow2": {
+    "scope": "javascript,typescript",
+    "prefix": "expect-toThrow2",
+    "body": "expect(${1:function}).toThrow();"
+  },
+
   "expectInput": {
     "scope": "javascript,typescript",
     "prefix": "expect-input-value",
-    "body": "expect(await ${1:element}.getAttribute('value')).toBe('${2:value}');",
+    "body": "expect(await ${1:element}.getAttribute('value')).${2|toBe,not.toBe,toEqual,toMatch,toContain|}('${3:value}');",
+    // "body": "expect(await ${1:element}.getAttribute('value')).${2|toBe,toEqual,toMatch,toBeDefined,toBeUndefined,toBeNull,toBeTruthy,toBeFalsy,toContain,toBeGreaterThan,toBeLessThan,toBeCloseTo,toThrow|}('${3:value}');",
     "description": "驗證 input/select 欄位值是否符合預期"
   },
 
@@ -134,6 +219,9 @@
     "prefix": "exr",
     "body": "expect(await ${1:element}.getAttribute('checked')).toBeTruthy();"
   },
+
+  // Others
+
   "elementByButtonText": {
     "scope": "javascript,typescript",
     "prefix": "ebbtn",
@@ -279,35 +367,43 @@
     "body": "await ${1:element}.sendKeys('$2');",
     "description": "Protractor element.sendKeys"
   },
-  "browserGet": {
+
+
+  "bg-browserGet": {
     "scope": "javascript,typescript",
     "prefix": "bg",
     "body": "await browser.get('$1');",
     "description": "Protractor browser.get"
   },
-  "browserGetCurrentUrl": {
+  "bgcurl-browserGetCurrentUrl": {
     "scope": "javascript,typescript",
     "prefix": "bgcurl",
     "body": "await browser.getCurrentUrl();",
     "description": "Protractor browser.getCurrentUrl"
   },
-  "browserSetLocation": {
+  "bsl-browserSetLocation": {
     "scope": "javascript,typescript",
     "prefix": "bsl",
     "body": "await browser.setLocation('$1');",
     "description": "Protractor browser.setLocation"
   },
-  "browserWait": {
+  "bw-browserWait": {
     "scope": "javascript,typescript",
     "prefix": "bw",
     "body": "await browser.wait($1);",
     "description": "Protractor browser.wait"
   },
-  "browserWaitForAngular": {
+  "bwa-waitForAngular": {
     "scope": "javascript,typescript",
     "prefix": "bwa",
     "body": "await browser.waitForAngular();",
     "description": "Protractor browser.waitForAngular"
+  },
+  "bwae-waitForAngularEnabled": {
+    "scope": "javascript,typescript",
+    "prefix": "bwae",
+    "body": "await browser.waitForAngularEnabled(${1|false,true|});",
+    "description": "Protractor browser.waitForAngularEnabled"
   }
   // "poset": {
   //   "scope": "javascript,typescript",
