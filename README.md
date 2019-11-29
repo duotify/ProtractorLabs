@@ -11,6 +11,23 @@
 1. 執行 Web API 伺服器
 
    請到 [這裡](https://github.com/duotify/ProtractorLabs/releases/tag/v1.0) 下載本課程所需的後端 Web API 程式，並依據該頁面說明進行下載並執行。
+   
+   **Windows PowerShell**
+
+   ```ps1
+   $ProgressPreference = 'SilentlyContinue'
+   [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11"
+   Invoke-WebRequest -Uri https://github.com/duotify/ProtractorLabs/releases/download/v1.0/ProtractorLabsBE.exe -OutFile ProtractorLabsBE.exe
+   start .\ProtractorLabsBE.exe
+   ```
+
+   **macOS**
+
+   ```sh
+   curl -sL https://github.com/duotify/ProtractorLabs/releases/download/v1.0/ProtractorLabsBE -o ProtractorLabsBE
+   chmod a+x ProtractorLabsBE
+   ./ProtractorLabsBE
+   ```
 
 2. 使用 Git 下載練習專案並透過 `npm install` 安裝套件
 
